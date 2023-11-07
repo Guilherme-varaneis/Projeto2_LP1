@@ -1,0 +1,61 @@
+create table cliente(
+id_cliente serial,
+nome_cli varchar(50), 
+logradouro_cli varchar(50),
+bairro_cli varchar (50),
+cidade_cli varchar (50),
+estado_cli varchar (50),
+cep_cli varchar (15),
+rg_cli varchar (25),
+cpf_cli varchar(15),
+email_cli varchar (50),
+numero_cli integer,
+telefone_cli integer, 
+CONSTRAINT cliente_pkey PRIMARY KEY (id_cliente)
+)
+
+create table editora(
+id_ed serial,
+nome_ed varchar (50),
+email_ed varchar (50),
+telefone_ed varchar(50),
+cidade_ed varchar (50),
+estado_ed varchar (50),
+pais_ed varchar (50),
+CONSTRAINT editora_pkey PRIMARY KEY (id_ed)
+	)
+
+
+
+
+create table livro(
+id_livro serial,
+nome_livro varchar (50),
+genero_livro varchar (50),
+autor_livro varchar (50),
+isbn_livro int,
+num_paginas_livro int,
+ano_livro int,
+valor_livro double precision,
+custo_livro double precision,
+id_ed integer,
+CONSTRAINT livro_pkey PRIMARY KEY (id_livro),
+CONSTRAINT editora_fk FOREIGN KEY (id_ed) REFERENCES editora (id_ed)
+)
+
+create table pedido(
+	id_ped serial, 
+	valor_ped double precision,
+	id_cliente integer,
+	CONSTRAINT pedido_pkey PRIMARY KEY (id_ped),
+	CONSTRAINT pedido_id_cliente_fkey FOREIGN KEY(id_cliente) REFERENCES cliente (id_cliente)
+	)
+
+CREATE TABLE pedido_livro(
+    id_livro integer,
+    id_ped integer,
+    val_livro double precision,
+    qtd_livro integer,
+    CONSTRAINT pedido_livro_id_livro_fkey FOREIGN KEY (id_livro) REFERENCES livro(id_livro),
+    CONSTRAINT pedido_livro_id_ped_fkey FOREIGN KEY (id_ped) REFERENCES pedido (id_ped)
+)
