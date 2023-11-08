@@ -1,20 +1,15 @@
 package br.com.projeto_livraria.view;
 
-/**
- * Importando as classes necessárias para trabalhar nesta classe
- */
+
 import javax.swing.JOptionPane;
 import br.com.projeto_livraria.dto.FuncionarioDTO;
 import br.com.projeto_livraria.ctr.FuncionarioCTR;
 
-/**
- *
- * @author André Luis Gobbi Primo / Ivan Oliveira Lopes
- */
+
 public class LoginVIEW extends javax.swing.JFrame{
     FuncionarioCTR funcionarioCTR = new FuncionarioCTR(); //Cria um obejto funcionarioCTR
     FuncionarioDTO funcionarioDTO = new FuncionarioDTO(); //Cria um objeto funcionarioDTO
-//    
+  
     public LoginVIEW() {
         initComponents();
         this.setLocationRelativeTo(null);
